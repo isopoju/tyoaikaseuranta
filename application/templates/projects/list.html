@@ -3,16 +3,16 @@
 {% block body %}
   <table>
     <tr>
-      <th>Task</th>
+      <th>Project</th>
       <th>Done</th>
       <th></th>
     </tr>
-    {% for task in tasks %}
+    {% for project in projects %}
     <tr>
-      <td>{{ task.name }}</td>
-      <td>{{ task.done }}</td>
+      <td>{{ project.name }}</td>
+      <td>{{ project.done }}</td>
       <td>
-	<form method="POST" action="{{ url_for('tasks_set_done', task_id=task.id) }}">
+	<form method="POST" action="{{ url_for('projects_set_done', project_id=project.id) }}">
 	  <input type="submit" value="Change status!"/>
 	</form>
       </td>

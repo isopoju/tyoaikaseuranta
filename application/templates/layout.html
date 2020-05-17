@@ -2,13 +2,13 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>TodoApplication</title>
+    <title>Projektin työaikaseuranta</title>
   </head>
   
   <body>
     <ul>
-      <li><a href="{{ url_for('tasks_index') }}">List tasks</a></li>
-      <li><a href="{{ url_for('tasks_form') }}">Add a task</a></li>
+      <li><a href="{{ url_for('projects_index') }}">Listaa projektit</a></li>
+      <li><a href="{{ url_for('projects_form') }}">Lisää uusi projekti</a></li>
     </ul>
     
     {% block body %}
