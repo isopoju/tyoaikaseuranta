@@ -2,6 +2,7 @@
 
 Työaikaseuranta on web-sovellus, jolla voidaan seurata ohjelmistotuotantoprojektiin tai harjoitustyöhön käytettyä työaikaa. Projektipäällikkö tai ohjaaja saa järjestelmältä erilaisia yhteenvetoraportteja osallistujien kirjaamista työsuoritteista.
 
+
 ## Heroku
 
 [Projektin työaikaseuranta Herokussa](https://tyoaikaseuranta.herokuapp.com/)
@@ -9,4 +10,4 @@ Työaikaseuranta on web-sovellus, jolla voidaan seurata ohjelmistotuotantoprojek
 
 ## Dokumentaatio
 
-[Tietokantakaavio (alustava)](https://github.com/isopoju/tyoaikaseuranta/blob/master/dokumentaatio/tietokantakaavio.png)
+[Tietokantakaavio (alustava)](https://github.com/isopoju/tyoaikaseuranta/blob/master/documentation/tietokantakaavio.png)
