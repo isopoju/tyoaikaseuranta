@@ -11,3 +11,5 @@ Työaikaseuranta on web-sovellus, jolla voidaan seurata ohjelmistotuotantoprojek
 ## Dokumentaatio
 
 [Tietokantakaavio (alustava)](https://github.com/isopoju/tyoaikaseuranta/blob/master/documentation/tietokantakaavio.png)
+
+[Käyttötapaukset](https://github.com/isopoju/tyoaikaseuranta/blob/master/documentation/usecases.md)
