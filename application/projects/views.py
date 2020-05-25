@@ -15,17 +15,20 @@ def projects_form():
 @app.route("/projects/<project_id>/", methods=["POST"])
 def projects_set_ended(project_id):
 
-    t = Project.query.get(project_id)
-    t.ended = True
+    p = Project.query.get(project_id)
+    p.ended = True
     db.session().commit()
   
     return redirect(url_for("projects_index"))
 
 @app.route("/projects/", methods=["POST"])
 def projects_create():
-    t = Project(request.form.get("name"))
+    form = ProjectForm(request.form)
 
-    db.session().add(t)
+    p = Project(form.name.data)
+    p.ended = form.ended.data
+
+    db.session().add(p)
     db.session().commit()
   
     return redirect(url_for("projects_index"))
