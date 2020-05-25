@@ -1,6 +1,8 @@
-from application import app, db
 from flask import redirect, render_template, request, url_for
+
+from application import app, db
 from application.projects.models import Project
+from application.projects.forms import ProjectForm
 
 @app.route("/projects", methods=["GET"])
 def projects_index():
@@ -8,7 +10,7 @@ def projects_index():
 
 @app.route("/projects/new/")
 def projects_form():
-    return render_template("projects/new.html")
+    return render_template("projects/new.html", form = ProjectForm())
   
 @app.route("/projects/<project_id>/", methods=["POST"])
 def projects_set_done(project_id):
