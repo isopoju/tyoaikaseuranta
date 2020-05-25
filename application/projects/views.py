@@ -25,6 +25,9 @@ def projects_set_ended(project_id):
 def projects_create():
     form = ProjectForm(request.form)
 
+    if not form.validate():
+        return render_template("projects/new.html", form = form)
+
     p = Project(form.name.data)
     p.ended = form.ended.data
 
