@@ -13,10 +13,10 @@ def projects_form():
     return render_template("projects/new.html", form = ProjectForm())
   
 @app.route("/projects/<project_id>/", methods=["POST"])
-def projects_set_done(project_id):
+def projects_set_ended(project_id):
 
     t = Project.query.get(project_id)
-    t.done = True
+    t.ended = True
     db.session().commit()
   
     return redirect(url_for("projects_index"))

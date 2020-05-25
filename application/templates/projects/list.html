@@ -4,15 +4,15 @@
   <table>
     <tr>
       <th>Project</th>
-      <th>End</th>
+      <th>Ended</th>
       <th></th>
     </tr>
     {% for project in projects %}
     <tr>
       <td>{{ project.name }}</td>
-      <td>{{ project.done }}</td>
+      <td>{{ project.ended }}</td>
       <td>
-	<form method="POST" action="{{ url_for('projects_set_done', project_id=project.id) }}">
+	<form method="POST" action="{{ url_for('projects_set_ended', project_id=project.id) }}">
 	  <input type="submit" value="Lopeta"/>
 	</form>
       </td>
