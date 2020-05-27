@@ -1,5 +1,5 @@
 from flask import render_template, request, redirect, url_for
-from flask_login import login_required
+from flask_login import login_required, current_user
 
 from application import app, db
 from application.projects.models import Project
@@ -34,6 +34,7 @@ def projects_create():
 
     p = Project(form.name.data)
     p.ended = form.ended.data
+    p.account_id = current_user.id
 
     db.session().add(p)
     db.session().commit()
