@@ -138,5 +138,5 @@ dmypy.json
 cython_debug/
 
 # SQLAlchemy
-projects.db
+database.db
 sqlite3.exe
