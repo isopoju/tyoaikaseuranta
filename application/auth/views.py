@@ -14,10 +14,11 @@ def auth_login():
 
     user = User.query.filter_by(username=form.username.data, password=form.password.data).first()
     if not user:
-        return render_template("auth/loginform.html", form = form, error = "No such username or password")
+        error = "Väärä käyttäjätunnus tai salasana."
+        return render_template("auth/loginform.html", form = form, error = error)
 
     login_user(user)
-    return redirect(url_for("index"))
+    return redirect(url_for("projects_index"))
 
 @app.route("/auth/logout")
 def auth_logout():
@@ -40,4 +41,4 @@ def register():
     db.session().add(new_user)
     db.session().commit()
   
-    return redirect(url_for("index"))
+    return redirect(url_for("auth_login"))

@@ -3,20 +3,19 @@
 {% block body %}
   <table>
     <tr>
+      <th>Käynnissä</th>
       <th>Projekti</th>
       <th>Kuvaus</th>
-      <th>Käynnissä</th>
-      <th></th>
     </tr>
     {% for project in projects %}
     <tr>
+      <td>{{ project.run }}</td>
       <td>{{ project.name }}</td>
       <td>{{ project.description }}</td>
-      <td>{{ project.run }}</td>
       <td>
-	<form method="POST" action="{{ url_for('projects_set_run', project_id=project.id) }}">
-	  <input type="submit" value="Lopeta"/>
-	</form>
+	      <form method="POST" action="{{ url_for('projects_set_run', project_id=project.id) }}">
+	        <input type="submit" value="Näytä"/>
+	      </form>
       </td>
     </tr>
     {% endfor %}
