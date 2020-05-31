@@ -16,10 +16,10 @@ def projects_form():
   
 @app.route("/projects/<project_id>/", methods=["POST"])
 @login_required
-def projects_set_ended(project_id):
+def projects_set_run(project_id):
 
     p = Project.query.get(project_id)
-    p.ended = True
+    p.run = True
     db.session().commit()
   
     return redirect(url_for("projects_index"))
@@ -32,11 +32,18 @@ def projects_create():
     if not form.validate():
         return render_template("projects/new.html", form = form)
 
-    p = Project(form.name.data)
-    p.ended = form.ended.data
-    p.account_id = current_user.id
+    if not form.validate_on_submit():
+        error = "Tarkista alkamis- ja päättymispäivämäärät."
+        return render_template("projects/new.html", form = form, error = error)
 
-    db.session().add(p)
+    new_project = Project(form.name.data)
+    new_project.description = form.description.data
+    new_project.start_date = form.start_date.data
+    new_project.end_date = form.end_date.data
+    new_project.run = form.run.data
+    new_project.owner_id = current_user.id
+
+    db.session().add(new_project)
     db.session().commit()
   
     return redirect(url_for("projects_index"))

@@ -1,6 +1,9 @@
 {% extends "layout.html" %}
   
 {% block body %}
+{% if error %}
+{{ error }}
+{% endif %}
 <form method="POST" action="{{ url_for('projects_create') }}">
   <table>
     <tr>
@@ -20,10 +23,55 @@
     </tr>
     <tr>
       <td>
-        {{ form.ended.label }}
+        {{ form.description.label }}
       </td>
       <td>
-        {{ form.ended }}
+        {{ form.description }}
+      </td>
+      <td>
+        <ul>
+          {% for error in form.description.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        {{ form.start_date.label }}
+      </td>
+      <td>
+        {{ form.start_date }}
+      </td>
+      <td>
+        <ul>
+          {% for error in form.start_date.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        {{ form.end_date.label }}
+      </td>
+      <td>
+        {{ form.end_date }}
+      </td>
+      <td>
+        <ul>
+          {% for error in form.end_date.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        {{ form.run.label }}
+      </td>
+      <td>
+        {{ form.run }}
       </td>
     </tr>
     <tr>
