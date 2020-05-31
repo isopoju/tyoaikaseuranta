@@ -13,9 +13,7 @@
       <td>{{ project.name }}</td>
       <td>{{ project.description }}</td>
       <td>
-	      <form method="POST" action="{{ url_for('projects_set_run', project_id=project.id) }}">
-	        <input type="submit" value="Näytä"/>
-	      </form>
+        <a href="{{ url_for('projects_view', project_id=project.id) }}"><button>Näytä</button></a>
       </td>
     </tr>
     {% endfor %}

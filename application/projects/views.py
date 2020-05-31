@@ -47,3 +47,8 @@ def projects_create():
     db.session().commit()
   
     return redirect(url_for("projects_index"))
+
+@app.route("/projects/<project_id>/", methods=["GET"])
+@login_required
+def projects_view(project_id):
+    return render_template("projects/view.html", project = Project.query.get(project_id))
