@@ -13,13 +13,37 @@ def projects_index():
 @login_required
 def projects_form():
     return render_template("projects/new.html", form = ProjectForm())
-  
-@app.route("/projects/<project_id>/", methods=["POST"])
-@login_required
-def projects_set_run(project_id):
 
-    p = Project.query.get(project_id)
-    p.run = True
+@app.route("/projects/modify/<project_id>", methods=["GET"])
+@login_required
+def projects_modify(project_id):
+    project = Project.query.get(project_id)
+
+    return render_template("projects/update.html", form = ProjectForm(), project = project)
+
+@app.route("/projects/update/<project_id>", methods=["POST"])
+@login_required
+def projects_update(project_id):
+    form = ProjectForm(request.form)
+
+    project = Project.query.get(project_id)
+
+    if not project:
+        return redirect(url_for("project_index")) 
+
+    if not form.validate():
+        return render_template("projects/update.html", form = form)
+
+    if not form.validate_on_submit():
+        error = "Tarkista alkamis- ja päättymispäivämäärät."
+        return render_template("projects/update.html", form = form, error = error)
+
+    project.name = form.name.data
+    project.description = form.description.data
+    project.start_date = form.start_date.data
+    project.end_date = form.end_date.data
+    project.run = form.run.data
+
     db.session().commit()
   
     return redirect(url_for("projects_index"))

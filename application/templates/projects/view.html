@@ -17,7 +17,7 @@
       <td>{{ project.end_date }}</td>
       <td>{{ project.run }}</td>
       <td>
-        <a href="{{ url_for('projects_update', project_id=project.id) }}"><button>Muokkaa</button></a>
+        <a href="{{ url_for('projects_modify', project_id=project.id) }}"><button>Muokkaa</button></a>
       </td>
     </tr>
   </table>
