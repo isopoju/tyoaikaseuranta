@@ -76,3 +76,13 @@ def projects_create():
 @login_required
 def projects_view(project_id):
     return render_template('projects/view.html', project = Project.query.get(project_id))
+
+@app.route("/projects/delete/<project_id>/", methods=["POST"])
+@login_required
+def projects_delete(project_id):
+    deleted_project = Project.query.get(project_id) 
+
+    db.session().delete(deleted_project) 
+    db.session().commit() 
+
+    return redirect(url_for('projects_index'))

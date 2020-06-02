@@ -3,7 +3,6 @@
 {% block body %}
 <h3>Muokattava projekti</h3>
 {{ error }}
-TODO: Näytetään vain projektin omistajalle. Lisää [Poista] -> poistaa projektin.
 <form method="POST" action="{{ url_for('projects_update', project_id=project.id) }}">
   <table>
     <tr>
@@ -61,5 +60,8 @@ TODO: Näytetään vain projektin omistajalle. Lisää [Poista] -> poistaa proje
         <input type="submit" value="Tallenna"/>
       </td>
     </tr>
+</form>
+<form method="POST" action="{{ url_for('projects_delete', project_id=project.id) }}">
+  <input type="submit" value="Poista"/>
 </form>
 {% endblock %}
