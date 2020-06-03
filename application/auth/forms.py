@@ -8,7 +8,6 @@ class LoginForm(FlaskForm):
     class Meta:
         csrf = False
 
-
 class RegisterForm(FlaskForm):
     name = StringField("Nimi", [validators.Length(min=3)])
     username = StringField("Käyttäjätunnus", [validators.Length(min=3)])

@@ -30,7 +30,7 @@ def projects_update(project_id):
     project = Project.query.get(project_id)
 
     if not project:
-        return redirect(url_for('project_index')) 
+        return redirect(url_for('project_index'))
 
     project.name = form.name.data
     project.description = form.description.data
@@ -42,8 +42,9 @@ def projects_update(project_id):
         return render_template('projects/update.html', form = form, project = project)
 
     if not form.validate_dates():
-        error = "Tarkista alkamis- ja päättymispäivämäärät."
-        return render_template('projects/update.html', form = form, project = project, error = error)
+        form.start_date.errors.append("Tarkista päivämäärä")
+        form.end_date.errors.append("Tarkista päivämäärä")
+        return render_template('projects/update.html', form = form, project = project)
 
     db.session().commit()
   
@@ -58,8 +59,9 @@ def projects_create():
         return render_template('projects/new.html', form = form)
 
     if not form.validate_dates():
-        error = "Tarkista alkamis- ja päättymispäivämäärät."
-        return render_template('projects/new.html', form = form, error = error)
+        form.start_date.errors.append("Tarkista päivämäärä")
+        form.end_date.errors.append("Tarkista päivämäärä")
+        return render_template('projects/new.html', form = form)
 
     new_project = Project(
         form.name.data,
@@ -83,10 +85,10 @@ def projects_view(project_id):
 @app.route("/projects/delete/<project_id>/", methods=["POST"])
 @login_required
 def projects_delete(project_id):
-    deleted_project = Project.query.get(project_id) 
+    deleted_project = Project.query.get(project_id)
 
-    db.session().delete(deleted_project) 
-    db.session().commit() 
+    db.session().delete(deleted_project)
+    db.session().commit()
 
     return redirect(url_for('projects_index'))
 
@@ -99,7 +101,7 @@ def projects_join(project_id):
     if not project in logged_user.attending:
         project.participants.append(logged_user)
 
-        db.session().add(project) 
-        db.session().commit() 
+        db.session().add(project)
+        db.session().commit()
 
     return render_template('projects/view.html', project = project)

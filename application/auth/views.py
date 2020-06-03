@@ -32,13 +32,18 @@ def register_form():
 @app.route("/auth/register", methods = ["POST"])
 def register():
     form = RegisterForm(request.form)
-
     if not form.validate():
+        return render_template("auth/registerform.html", form = form)
+
+    user = User.query.filter_by(username = form.username.data).first()
+    if user:
+        form.username.errors.append("Käyttäjätunnus on jo käytössä")
         return render_template("auth/registerform.html", form = form)
 
     new_user = User(form.name.data, form.username.data, form.password.data)
 
     db.session().add(new_user)
     db.session().commit()
-  
-    return redirect(url_for("auth_login"))
+
+    login_user(new_user)
+    return redirect(url_for("projects_index"))
