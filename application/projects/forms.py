@@ -7,9 +7,9 @@ class ProjectForm(FlaskForm):
     description = StringField("Kuvaus", [validators.Length(min=3)])
     start_date = DateField("Alkaa", default=date.today)
     end_date = DateField("Päättyy", default=date.today)
-    run = BooleanField("Käynnissä")
+    running = BooleanField("Käynnissä")
 
-    def validate_on_submit(self):
+    def validate_dates(self):
         result = super(ProjectForm, self).validate()
         if (self.start_date.data > self.end_date.data):
             return False

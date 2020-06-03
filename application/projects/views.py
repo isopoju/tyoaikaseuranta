@@ -4,6 +4,7 @@ from flask_login import login_required, current_user
 from application import app, db
 from application.projects.models import Project
 from application.projects.forms import ProjectForm
+from application.auth.models import User
 
 @app.route("/projects", methods=["GET"])
 def projects_index():
@@ -35,12 +36,12 @@ def projects_update(project_id):
     project.description = form.description.data
     project.start_date = form.start_date.data
     project.end_date = form.end_date.data
-    project.run = form.run.data
+    project.running = form.running.data
 
     if not form.validate():
         return render_template('projects/update.html', form = form, project = project)
 
-    if not form.validate_on_submit():
+    if not form.validate_dates():
         error = "Tarkista alkamis- ja päättymispäivämäärät."
         return render_template('projects/update.html', form = form, project = project, error = error)
 
@@ -56,15 +57,17 @@ def projects_create():
     if not form.validate():
         return render_template('projects/new.html', form = form)
 
-    if not form.validate_on_submit():
+    if not form.validate_dates():
         error = "Tarkista alkamis- ja päättymispäivämäärät."
         return render_template('projects/new.html', form = form, error = error)
 
-    new_project = Project(form.name.data)
-    new_project.description = form.description.data
-    new_project.start_date = form.start_date.data
-    new_project.end_date = form.end_date.data
-    new_project.run = form.run.data
+    new_project = Project(
+        form.name.data,
+        form.description.data,
+        form.start_date.data,
+        form.end_date.data,
+        form.running.data
+    )
     new_project.owner_id = current_user.id
 
     db.session().add(new_project)
@@ -86,3 +89,17 @@ def projects_delete(project_id):
     db.session().commit() 
 
     return redirect(url_for('projects_index'))
+
+@app.route("/projects/join/<project_id>/", methods=["POST"])
+@login_required
+def projects_join(project_id):
+    project = Project.query.get(project_id)
+    logged_user = User.query.get(current_user.id)
+
+    if not project in logged_user.attending:
+        project.participants.append(logged_user)
+
+        db.session().add(project) 
+        db.session().commit() 
+
+    return render_template('projects/view.html', project = project)
