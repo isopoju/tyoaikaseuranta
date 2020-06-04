@@ -66,9 +66,9 @@ def projects_create():
         form.description.data,
         form.start_date.data,
         form.end_date.data,
-        form.running.data
+        form.running.data,
+        current_user.id
     )
-    new_project.owner_id = current_user.id
 
     db.session().add(new_project)
     db.session().commit()

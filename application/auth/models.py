@@ -11,6 +11,9 @@ class User(Base):
     password = db.Column(db.String(128), nullable=False)
     remember = db.Column(db.Boolean, nullable=False)
 
+    projects = db.relationship("Project", backref="account", lazy=True)
+    # projects = Project.query.with_parent(current_user)
+
     def __init__(self, name, email, username, password, remember):
         self.name = name
         self.email = email
