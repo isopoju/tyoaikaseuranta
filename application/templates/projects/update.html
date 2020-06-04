@@ -8,6 +8,8 @@
     <tr>
       <td>
         {{ form.name.label }}
+      </td>
+      <td>
         {{ form.name(value=project.name) }}
       </td>
       <td>
@@ -19,6 +21,8 @@
     <tr>
       <td>
         {{ form.description.label }}
+      </td>
+      <td>
         {{ form.description(value=project.description) }}
       </td>
       <td>
@@ -30,6 +34,8 @@
     <tr>
       <td>
         {{ form.start_date.label }}
+      </td>
+      <td>
         {{ form.start_date(value=project.start_date) }}
       </td>
       <td>
@@ -41,6 +47,8 @@
     <tr>
       <td>
         {{ form.end_date.label }}
+      </td>
+      <td>
         {{ form.end_date(value=project.end_date) }}
       </td>
       <td>
@@ -52,6 +60,8 @@
     <tr>
       <td>
         {{ form.running.label }}
+      </td>
+      <td>
         {{ form.running(checked=project.running) }}
       </td>
     </tr>
