@@ -7,8 +7,8 @@ attends = db.Table('participation',
 )
 
 class Project(Base):
-    name = db.Column(db.String(144), nullable=False)
-    description = db.Column(db.String(144), nullable=False)
+    name = db.Column(db.String(128), nullable=False)
+    description = db.Column(db.String(1024), nullable=False)
     start_date = db.Column(db.Date, nullable=False)
     end_date = db.Column(db.Date, nullable=False)
     running = db.Column(db.Boolean, nullable=False)

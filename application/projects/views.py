@@ -42,8 +42,7 @@ def projects_update(project_id):
         return render_template('projects/update.html', form = form, project = project)
 
     if not form.validate_dates():
-        form.start_date.errors.append("Tarkista päivämäärä")
-        form.end_date.errors.append("Tarkista päivämäärä")
+        form.end_date.errors.append("Päättyy ennen alkamista")
         return render_template('projects/update.html', form = form, project = project)
 
     db.session().commit()
@@ -59,8 +58,7 @@ def projects_create():
         return render_template('projects/new.html', form = form)
 
     if not form.validate_dates():
-        form.start_date.errors.append("Tarkista päivämäärä")
-        form.end_date.errors.append("Tarkista päivämäärä")
+        form.end_date.errors.append("Päättyy ennen alkamista")
         return render_template('projects/new.html', form = form)
 
     new_project = Project(
