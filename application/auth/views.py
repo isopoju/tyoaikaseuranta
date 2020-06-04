@@ -11,6 +11,10 @@ def auth_login():
         return render_template("auth/loginform.html", form = LoginForm())
 
     form = LoginForm(request.form)
+    if not form.validate():
+        # validoidaan liian pitkat kentat => sivu ei kaadu
+        error = "Väärä käyttäjätunnus tai salasana."
+        return render_template("auth/loginform.html", form = form, error=error)
 
     user = User.query.filter_by(username=form.username.data, password=form.password.data).first()
     if not user:
