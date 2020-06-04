@@ -15,6 +15,7 @@ class Project(Base):
 
     owner_id = db.Column(db.Integer, db.ForeignKey('account.id'), nullable=False)
     participants = db.relationship("User", secondary=attends, backref=db.backref("attending", lazy="dynamic"))
+    workloads = db.relationship("Workload", cascade="all, delete", backref="workload")
 
     def __init__(self, name, description, start_date, end_date, running, owner_id):
         self.name = name

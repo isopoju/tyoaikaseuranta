@@ -22,6 +22,8 @@ from application.projects import views
 from application.auth import models
 from application.auth import views
 
+from application.workload import models
+
 # login
 from application.auth.models import User
 from os import urandom

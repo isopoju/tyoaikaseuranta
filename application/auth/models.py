@@ -12,6 +12,7 @@ class User(Base):
     remember = db.Column(db.Boolean, nullable=False)
 
     projects = db.relationship("Project", backref="account", lazy=True)
+    workloads = db.relationship("Workload", backref='account', lazy=True)
     # projects = Project.query.with_parent(current_user)
 
     def __init__(self, name, email, username, password, remember):
