@@ -40,7 +40,7 @@ def register():
         form.username.errors.append("Käyttäjätunnus on jo käytössä")
         return render_template("auth/registerform.html", form = form)
 
-    new_user = User(form.name.data, form.username.data, form.password.data)
+    new_user = User(form.name.data, form.email.data, form.username.data, form.password.data, False)
 
     db.session().add(new_user)
     db.session().commit()

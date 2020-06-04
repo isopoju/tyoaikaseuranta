@@ -1,17 +1,20 @@
 from flask_wtf import FlaskForm
-from wtforms import PasswordField, StringField, validators
+from wtforms import BooleanField, PasswordField, StringField
+from wtforms.validators import Email, InputRequired, Length
   
 class LoginForm(FlaskForm):
-    username = StringField("Käyttäjätunnus")
-    password = PasswordField("Salasana")
+    username = StringField("Käyttäjätunnus", validators=[InputRequired(), Length(min=3, max=15)])
+    password = PasswordField("Salasana", validators=[InputRequired(), Length(min=3, max=63)])
+  # remember = BooleanField("Muista minut", default=False)
   
     class Meta:
         csrf = False
 
 class RegisterForm(FlaskForm):
-    name = StringField("Nimi", [validators.Length(min=3)])
-    username = StringField("Käyttäjätunnus", [validators.Length(min=3)])
-    password = PasswordField("Salasana", [validators.Length(min=3)])
+    name = StringField("Nimi", validators=[InputRequired(), Length(min=3, max=63)])
+    email = StringField("Email", validators=[Email(), InputRequired(), Length(min=3, max=63)])
+    username = StringField("Käyttäjätunnus", validators=[InputRequired(), Length(min=3, max=15)])
+    password = PasswordField("Salasana", validators=[InputRequired(), Length(min=3, max=63)])
 
     class Meta:
         csrf = False
