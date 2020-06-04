@@ -5,6 +5,8 @@ from application import app, db
 from application.projects.models import Project
 from application.projects.forms import ProjectForm
 from application.auth.models import User
+from application.workload.models import Workload
+from application.workload.forms import WorkloadForm
 
 @app.route("/projects", methods=["GET"])
 def projects_index():
@@ -19,6 +21,8 @@ def projects_form():
 @login_required
 def projects_modify(project_id):
     project = Project.query.get(project_id)
+    if not project:
+        return redirect(url_for('projects_index'))
 
     return render_template('projects/update.html', form = ProjectForm(), project = project)
 
@@ -30,7 +34,7 @@ def projects_update(project_id):
     project = Project.query.get(project_id)
 
     if not project:
-        return redirect(url_for('project_index'))
+        return redirect(url_for('projects_index'))
 
     project.name = form.name.data
     project.description = form.description.data
@@ -46,7 +50,7 @@ def projects_update(project_id):
         return render_template('projects/update.html', form = form, project = project)
 
     db.session().commit()
-  
+
     return redirect(url_for('projects_view', project_id=project.id))
 
 @app.route("/projects/", methods=["POST"])
@@ -72,18 +76,23 @@ def projects_create():
 
     db.session().add(new_project)
     db.session().commit()
-  
+
     return redirect(url_for('projects_index'))
 
 @app.route("/projects/<project_id>/", methods=["GET"])
 @login_required
 def projects_view(project_id):
-    return render_template('projects/view.html', project = Project.query.get(project_id))
+    if not Project.query.get(project_id):
+        return redirect(url_for('projects_index'))
+
+    return render_template('projects/view.html', project = Project.query.get(project_id), form = WorkloadForm())
 
 @app.route("/projects/delete/<project_id>/", methods=["POST"])
 @login_required
 def projects_delete(project_id):
     deleted_project = Project.query.get(project_id)
+
+    # tahan ehka popup varmistus..
 
     db.session().delete(deleted_project)
     db.session().commit()
@@ -102,4 +111,28 @@ def projects_join(project_id):
         db.session().add(project)
         db.session().commit()
 
-    return render_template('projects/view.html', project = project)
+    return redirect(url_for('projects_view', project_id=project.id))
+
+@app.route("/projects/<project_id>", methods=["POST"])
+@login_required
+def workloads_create(project_id):
+    project = Project.query.get(project_id)
+    if not project:
+        return redirect(url_for('projects_index'))
+
+    form = WorkloadForm(request.form)
+    if not form.validate():
+        return render_template('projects/view.html', project = project, form = form)
+
+    new_workload = Workload(
+        form.date.data,
+        form.hours.data,
+        form.task.data,
+        current_user.id,
+        project_id
+    )
+
+    db.session().add(new_workload)
+    db.session().commit()
+
+    return redirect(url_for('projects_view', project_id=project.id))

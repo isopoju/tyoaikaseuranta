@@ -3,7 +3,7 @@ from application.models import Base
 
 class Workload(Base):
     date = db.Column(db.Date, nullable=False)
-    hours = db.Column(db.Float, nullable=False)
+    hours = db.Column(db.Integer, nullable=False)
     task = db.Column(db.String(128), nullable=False)
 
     worker_id = db.Column(db.Integer, db.ForeignKey('account.id'), nullable=False)
