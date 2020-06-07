@@ -75,4 +75,5 @@
 <form method="POST" action="{{ url_for('projects_delete', project_id=project.id) }}">
   <input type="submit" value="Poista"/>
 </form>
+<a href="{{ url_for('projects_hourly_report', project_id=project.id) }}"><button>Tuntiraportti</button></a>
 {% endblock %}

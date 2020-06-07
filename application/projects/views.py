@@ -12,7 +12,7 @@ from application.workload.forms import WorkloadForm
 def projects_index():
     return render_template('projects/list.html', projects = Project.query.all())
 
-@app.route("/projects/new/")
+@app.route("/projects/new/", methods=["GET"])
 @login_required
 def projects_form():
     return render_template('projects/new.html', form = ProjectForm())
@@ -136,3 +136,9 @@ def workloads_create(project_id):
     db.session().commit()
 
     return redirect(url_for('projects_view', project_id=project.id))
+
+@app.route("/project/hourly_report/<project_id>", methods=["GET"])
+@login_required
+def projects_hourly_report(project_id):
+
+    return render_template("projects/hourly_report.html", project_id = project_id)
