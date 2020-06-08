@@ -1,7 +1,7 @@
 from flask import render_template, request, redirect, url_for
-from flask_login import login_required, current_user
+from flask_login import current_user
 
-from application import app, db
+from application import app, db, login_manager, login_required
 from application.projects.models import Project
 from application.projects.forms import ProjectForm
 from application.auth.models import User
@@ -13,11 +13,12 @@ def projects_index():
     return render_template('projects/list.html', projects = Project.query.all())
 
 @app.route("/projects/new/", methods=["GET"])
-@login_required
+@login_required(role="ADMIN")
 def projects_form():
     return render_template('projects/new.html', form = ProjectForm())
 
 @app.route("/projects/modify/<project_id>", methods=["GET"])
+@login_required(role="ADMIN")
 @login_required
 def projects_modify(project_id):
     project = Project.query.get(project_id)
@@ -32,6 +33,8 @@ def projects_update(project_id):
     form = ProjectForm(request.form)
 
     project = Project.query.get(project_id)
+    if project.owner_id != current_user.id:
+        return redirect(url_for('projects_index'))
 
     if not project:
         return redirect(url_for('projects_index'))
@@ -54,7 +57,7 @@ def projects_update(project_id):
     return redirect(url_for('projects_view', project_id=project.id))
 
 @app.route("/projects/", methods=["POST"])
-@login_required
+@login_required(role="ADMIN")
 def projects_create():
     form = ProjectForm(request.form)
 
@@ -80,7 +83,7 @@ def projects_create():
     return redirect(url_for('projects_index'))
 
 @app.route("/projects/<project_id>/", methods=["GET"])
-@login_required
+@login_required(role="ADMIN")
 def projects_view(project_id):
     if not Project.query.get(project_id):
         return redirect(url_for('projects_index'))
@@ -88,7 +91,7 @@ def projects_view(project_id):
     return render_template('projects/view.html', project = Project.query.get(project_id), form = WorkloadForm())
 
 @app.route("/projects/delete/<project_id>/", methods=["POST"])
-@login_required
+@login_required(role="ADMIN")
 def projects_delete(project_id):
     deleted_project = Project.query.get(project_id)
 
@@ -100,7 +103,7 @@ def projects_delete(project_id):
     return redirect(url_for('projects_index'))
 
 @app.route("/projects/join/<project_id>/", methods=["POST"])
-@login_required
+@login_required(role="ADMIN")
 def projects_join(project_id):
     project = Project.query.get(project_id)
     logged_user = User.query.get(current_user.id)
@@ -114,7 +117,7 @@ def projects_join(project_id):
     return redirect(url_for('projects_view', project_id=project.id))
 
 @app.route("/projects/<project_id>", methods=["POST"])
-@login_required
+@login_required(role="ADMIN")
 def workloads_create(project_id):
     project = Project.query.get(project_id)
     if not project:
@@ -138,7 +141,7 @@ def workloads_create(project_id):
     return redirect(url_for('projects_view', project_id=project.id))
 
 @app.route("/project/hourly_report/<project_id>", methods=["GET"])
-@login_required
+@login_required(role="ADMIN")
 def projects_hourly_report(project_id):
 
     return render_template("projects/hourly_report.html", project_id = project_id)
