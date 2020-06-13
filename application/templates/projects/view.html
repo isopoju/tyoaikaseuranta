@@ -1,6 +1,4 @@
-{% extends "layout.html" %}
-
-{% block body %}
+{% extends "layout.html" %} {% block body %}
 <h3>Projektin tiedot</h3>
 <table>
   <tr>
@@ -17,14 +15,21 @@
     <td>{{ project.end_date }}</td>
     <td>{{ project.running }}</td>
     <td>
-      <a href="{{ url_for('projects_modify', project_id=project.id) }}"><button>Muokkaa</button></a>
+      <a
+        href="{{ url_for('projects_modify', project_id=project.id) }}"
+        class="btn btn-primary"
+        >Muokkaa</a
+      >
     </td>
   </tr>
 </table>
 <p>
   <b>Tuntilomake</b>
 </p>
-<form method="POST" action="{{ url_for('workloads_create', project_id=project.id) }}">
+<form
+  method="POST"
+  action="{{ url_for('workloads_create', project_id=project.id) }}"
+>
   <table>
     <tr>
       <td>
@@ -34,9 +39,7 @@
         {{ form.date }}
       </td>
       <td>
-        {% for error in form.date.errors %}
-          {{ error }}
-        {% endfor %}
+        {% for error in form.date.errors %} {{ error }} {% endfor %}
       </td>
     </tr>
     <tr>
@@ -47,9 +50,7 @@
         {{ form.hours }}
       </td>
       <td>
-        {% for error in form.hours.errors %}
-          {{ error }}
-        {% endfor %}
+        {% for error in form.hours.errors %} {{ error }} {% endfor %}
       </td>
     </tr>
     <tr>
@@ -60,20 +61,21 @@
         {{ form.task }}
       </td>
       <td>
-        {% for error in form.task.errors %}
-          {{ error }}
-        {% endfor %}
+        {% for error in form.task.errors %} {{ error }} {% endfor %}
       </td>
     </tr>
   </table>
-  <input type="submit" value="Lisää tunnit"/>
+  <input type="submit" value="Lisää tunnit" />
 </form>
-<form method="POST" action="{{ url_for('projects_join', project_id=project.id) }}">
-  <input type="submit" value="Liity"/>
+<form
+  method="POST"
+  action="{{ url_for('projects_join', project_id=project.id) }}"
+>
+  <input type="submit" value="Liity" />
 </form>
 <p>
-  TODO: [Muokkaa] näytetään vain projektin omistajalle.</br>
-  TODO: Käyttäjä näkee joko tuntilomakkeen tai [Liity] painikkeen.</br>
+  TODO: [Muokkaa] näytetään vain projektin omistajalle.<br />
+  TODO: Käyttäjä näkee joko tuntilomakkeen tai [Liity] painikkeen.<br />
   Missä käyttäjä näkee lisätyt tunnit? Tuntien muokkaus ja pois..
 </p>
 {% endblock %}

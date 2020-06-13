@@ -140,3 +140,9 @@ cython_debug/
 # SQLAlchemy
 database.db
 sqlite3.exe
+
+# Prettier
+.prettierrc
+
+# Visual Studio 2019
+.vs

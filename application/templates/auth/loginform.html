@@ -1,29 +1,27 @@
-{% extends "layout.html" %}
-
-{% block body %}
-{{ error }}
+{% extends "layout.html" %} {% block body %} {{ error }}
 <form method="POST" action="{{ url_for('auth_login') }}">
   <table>
     <tr>
       <td>
-	    {{ form.username.label }}
+        {{ form.username.label }}
       </td>
       <td>
-	    {{ form.username }}
+        {{ form.username }}
       </td>
     </tr>
     <tr>
       <td>
-	    {{ form.password.label }}
+        {{ form.password.label }}
       </td>
       <td>
-	    {{ form.password }}
+        {{ form.password }}
       </td>
     </tr>
     <tr>
       <td colspan="2">
-	      <input type="submit" value="Kirjaudu"/>
+        <input type="submit" value="Kirjaudu" />
       </td>
     </tr>
+  </table>
 </form>
 {% endblock %}

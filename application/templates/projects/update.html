@@ -1,9 +1,10 @@
-{% extends "layout.html" %}
-
-{% block body %}
+{% extends "layout.html" %} {% block body %}
 <h3>Muokattava projekti</h3>
 {{ error }}
-<form method="POST" action="{{ url_for('projects_update', project_id=project.id) }}">
+<form
+  method="POST"
+  action="{{ url_for('projects_update', project_id=project.id) }}"
+>
   <table>
     <tr>
       <td>
@@ -13,9 +14,7 @@
         {{ form.name(value=project.name) }}
       </td>
       <td>
-        {% for error in form.name.errors %}
-          {{ error }}
-        {% endfor %}
+        {% for error in form.name.errors %} {{ error }} {% endfor %}
       </td>
     </tr>
     <tr>
@@ -26,9 +25,7 @@
         {{ form.description(value=project.description) }}
       </td>
       <td>
-        {% for error in form.description.errors %}
-          {{ error }}
-        {% endfor %}
+        {% for error in form.description.errors %} {{ error }} {% endfor %}
       </td>
     </tr>
     <tr>
@@ -39,9 +36,7 @@
         {{ form.start_date(value=project.start_date) }}
       </td>
       <td>
-        {% for error in form.start_date.errors %}
-          {{ error }}
-        {% endfor %}
+        {% for error in form.start_date.errors %} {{ error }} {% endfor %}
       </td>
     </tr>
     <tr>
@@ -52,9 +47,7 @@
         {{ form.end_date(value=project.end_date) }}
       </td>
       <td>
-        {% for error in form.end_date.errors %}
-          {{ error }}
-        {% endfor %}
+        {% for error in form.end_date.errors %} {{ error }} {% endfor %}
       </td>
     </tr>
     <tr>
@@ -67,13 +60,20 @@
     </tr>
     <tr>
       <td colspan="3">
-        <input type="submit" value="Tallenna"/>
+        <input type="submit" value="Tallenna" />
       </td>
     </tr>
   </table>
 </form>
-<form method="POST" action="{{ url_for('projects_delete', project_id=project.id) }}">
-  <input type="submit" value="Poista"/>
+<form
+  method="POST"
+  action="{{ url_for('projects_delete', project_id=project.id) }}"
+>
+  <input type="submit" value="Poista" />
 </form>
-<a href="{{ url_for('projects_hourly_report', project_id=project.id) }}"><button>Tuntiraportti</button></a>
+<a
+  href="{{ url_for('projects_hourly_report', project_id=project.id) }}"
+  class="btn btn-primary"
+  >Tuntiraportti</a
+>
 {% endblock %}

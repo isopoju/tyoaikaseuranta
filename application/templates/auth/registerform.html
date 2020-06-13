@@ -1,7 +1,4 @@
-{% extends "layout.html" %}
-
-{% block body %}
-{{ error }}
+{% extends "layout.html" %} {% block body %} {{ error }}
 <form method="POST" action="{{ url_for('register') }}">
   <table>
     <tr>
@@ -12,9 +9,7 @@
         {{ form.name }}
       </td>
       <td>
-        {% for error in form.name.errors %}
-          {{ error }}
-        {% endfor %} 
+        {% for error in form.name.errors %} {{ error }} {% endfor %}
       </td>
     </tr>
     <tr>
@@ -25,41 +20,36 @@
         {{ form.email }}
       </td>
       <td>
-        {% for error in form.email.errors %}
-          {{ error }}
-        {% endfor %} 
+        {% for error in form.email.errors %} {{ error }} {% endfor %}
       </td>
     </tr>
     <tr>
       <td>
-	    {{ form.username.label }}
+        {{ form.username.label }}
       </td>
       <td>
-	    {{ form.username }}
+        {{ form.username }}
       </td>
       <td>
-        {% for error in form.username.errors %}
-          {{ error }}
-        {% endfor %} 
+        {% for error in form.username.errors %} {{ error }} {% endfor %}
       </td>
     </tr>
     <tr>
       <td>
-	    {{ form.password.label }}
+        {{ form.password.label }}
       </td>
       <td>
-	    {{ form.password }}
+        {{ form.password }}
       </td>
       <td>
-        {% for error in form.password.errors %}
-          {{ error }}
-        {% endfor %} 
+        {% for error in form.password.errors %} {{ error }} {% endfor %}
       </td>
     </tr>
     <tr>
       <td colspan="2">
-	    <input type="submit" value="Rekisteröidy"/>
+        <input type="submit" value="Rekisteröidy" />
       </td>
     </tr>
+  </table>
 </form>
 {% endblock %}

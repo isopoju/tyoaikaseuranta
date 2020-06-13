@@ -1,21 +1,24 @@
-{% extends "layout.html" %}
-
-{% block body %}
-  <table>
-    <tr>
-      <th>Käynnissä</th>
-      <th>Projekti</th>
-      <th>Kuvaus</th>
-    </tr>
-    {% for project in projects %}
-    <tr>
-      <td>{{ project.running }}</td>
-      <td>{{ project.name }}</td>
-      <td>{{ project.description }}</td>
-      <td>
-        <a href="{{ url_for('projects_view', project_id=project.id) }}"><button>Näytä</button></a>
-      </td>
-    </tr>
-    {% endfor %}
-  </table>
+{% extends "layout.html" %} {% block body %}
+<table>
+  <tr>
+    <th>Käynnissä</th>
+    <th>Projekti</th>
+    <th>Kuvaus</th>
+  </tr>
+  {% for project in projects %}
+  <tr>
+    <td>{{ project.running }}</td>
+    <td>{{ project.name }}</td>
+    <td>{{ project.description }}</td>
+    <td>
+      <a
+        href="{{ url_for('projects_view', project_id=project.id) }}"
+        class="btn btn-primary"
+      >
+        Näytä
+      </a>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
 {% endblock %}

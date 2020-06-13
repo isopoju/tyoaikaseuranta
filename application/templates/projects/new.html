@@ -1,7 +1,4 @@
-{% extends "layout.html" %}
-
-{% block body %}
-{{ error }}
+{% extends "layout.html" %} {% block body %} {{ error }}
 <form method="POST" action="{{ url_for('projects_create') }}">
   <table>
     <tr>
@@ -12,9 +9,7 @@
         {{ form.name }}
       </td>
       <td>
-        {% for error in form.name.errors %}
-          {{ error }}
-        {% endfor %}
+        {% for error in form.name.errors %} {{ error }} {% endfor %}
       </td>
     </tr>
     <tr>
@@ -25,9 +20,7 @@
         {{ form.description }}
       </td>
       <td>
-        {% for error in form.description.errors %}
-          {{ error }}
-        {% endfor %}
+        {% for error in form.description.errors %} {{ error }} {% endfor %}
       </td>
     </tr>
     <tr>
@@ -38,9 +31,7 @@
         {{ form.start_date }}
       </td>
       <td>
-        {% for error in form.start_date.errors %}
-          {{ error }}
-        {% endfor %}
+        {% for error in form.start_date.errors %} {{ error }} {% endfor %}
       </td>
     </tr>
     <tr>
@@ -51,9 +42,7 @@
         {{ form.end_date }}
       </td>
       <td>
-        {% for error in form.end_date.errors %}
-          {{ error }}
-        {% endfor %}
+        {% for error in form.end_date.errors %} {{ error }} {% endfor %}
       </td>
     </tr>
     <tr>
@@ -66,8 +55,9 @@
     </tr>
     <tr>
       <td colspan="3">
-        <input type="submit" value="Lisää"/>
+        <input type="submit" value="Lisää" />
       </td>
     </tr>
+  </table>
 </form>
 {% endblock %}
