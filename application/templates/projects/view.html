@@ -2,18 +2,21 @@
 <h3>Projektin tiedot</h3>
 <table>
   <tr>
+    <th>Käynnissä</th>
     <th>Nimi</th>
     <th>Kuvaus</th>
     <th>Alkaa</th>
     <th>Päättyy</th>
-    <th>Käynnissä</th>
+    <th>Omistaja</th>
   </tr>
   <tr>
+    <td>{{ project.running }}</td>
     <td>{{ project.name }}</td>
     <td>{{ project.description }}</td>
     <td>{{ project.start_date }}</td>
     <td>{{ project.end_date }}</td>
-    <td>{{ project.running }}</td>
+    <td>{{ project.get_owner_name() }}</td>
+    {% if current_user.id == project.owner_id %}
     <td>
       <a
         href="{{ url_for('projects_modify', project_id=project.id) }}"
@@ -21,8 +24,25 @@
         >Muokkaa</a
       >
     </td>
+    <td>
+      <a
+        href="{{ url_for('projects_hourly_report', project_id=project.id) }}"
+        class="btn btn-primary"
+        >Tuntiraportti</a
+      >
+    </td>
+    {% endif %}
   </tr>
 </table>
+
+{% if not project in current_user.attending %}
+<form
+  method="POST"
+  action="{{ url_for('projects_join', project_id=project.id) }}"
+>
+  <input type="submit" value="Liity" />
+</form>
+{% else %}
 <p>
   <b>Tuntilomake</b>
 </p>
@@ -67,15 +87,7 @@
   </table>
   <input type="submit" value="Lisää tunnit" />
 </form>
-<form
-  method="POST"
-  action="{{ url_for('projects_join', project_id=project.id) }}"
->
-  <input type="submit" value="Liity" />
-</form>
 <p>
-  TODO: [Muokkaa] näytetään vain projektin omistajalle.<br />
-  TODO: Käyttäjä näkee joko tuntilomakkeen tai [Liity] painikkeen.<br />
-  Missä käyttäjä näkee lisätyt tunnit? Tuntien muokkaus ja pois..
+  Missä käyttäjä näkee lisätyt tunnit? Käyttäjän tuntiraportti ja muokkaus?
 </p>
-{% endblock %}
+{% endif %} {% endblock %}

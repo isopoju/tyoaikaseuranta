@@ -1,5 +1,6 @@
 from application import db
 from application.models import Base
+from application.auth.models import User
 
 attends = db.Table('participation',
     db.Column('project_id', db.Integer, db.ForeignKey('project.id', ondelete="CASCADE")),
@@ -24,3 +25,6 @@ class Project(Base):
         self.end_date = end_date
         self.running = running
         self.owner_id = owner_id
+
+    def get_owner_name(self):
+        return User.query.get(self.owner_id).name
