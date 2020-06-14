@@ -1,5 +1,6 @@
 from flask import render_template, request, redirect, url_for
 from flask_login import login_user, logout_user
+from werkzeug.security import check_password_hash
 
 from application import app, db
 from application.auth.models import User
@@ -16,8 +17,8 @@ def auth_login():
         error = "Väärä käyttäjätunnus tai salasana."
         return render_template("auth/loginform.html", form = form, error=error)
 
-    user = User.query.filter_by(username=form.username.data, password=form.password.data).first()
-    if not user:
+    user = User.query.filter_by(username=form.username.data).first()
+    if not (user and check_password_hash(user.password, form.password.data)):
         error = "Väärä käyttäjätunnus tai salasana."
         return render_template("auth/loginform.html", form = form, error = error)
 

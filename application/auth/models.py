@@ -1,5 +1,6 @@
 from application import db
 from application.models import Base
+from werkzeug.security import generate_password_hash
 
 class User(Base):
 
@@ -19,7 +20,7 @@ class User(Base):
         self.name = name
         self.email = email
         self.username = username
-        self.password = password
+        self.password = generate_password_hash(password)
         self.remember = remember
 
     def get_id(self):
