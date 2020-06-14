@@ -1,6 +1,6 @@
 # Käyttäjätarinat
 
-## Vieras
+## Vierailija
 
 - voi listata sovellukseen perustetut projektit
 - voi rekisteröityä käyttäjäksi
@@ -13,12 +13,12 @@
 
 ## Tuntikirjaaja
 
-- voi tehdä tuntikirjauksia käynnissä oleviin projekteihin
-- voi muokata ja poistaa omina tuntikirjauksia
-- saa yhteenvetoraportin kaikista tekemistään tuntikirjauksissta
+- voi tehdä tuntikirjauksia käynnissä oleviin projekteihin [TODO: käynnissä tarkistus]
+- voi muokata ja poistaa omia tuntikirjauksia [TODO: puuttuu]
+- saa yhteenvetoraportin kaikista tekemistään tuntikirjauksista [TODO: puuttuu]
 
 ## Projektin omistaja
 
 - voi muokata tai poistaa omistamiaan projekteja
-- saa tarvittaessa yhteenvetoraportin projektiin tehdyistä tuntikirjauksista
-- väärä tuntikirjaaja / tuntikirjaus?
+- saa tarvittaessa yhteenvetoraportin projektiin tehdyistä tuntikirjauksista [TODO: puuttuu]
+- väärä tuntikirjaaja / tuntikirjaus? [TODO: puuttuu]

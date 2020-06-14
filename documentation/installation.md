@@ -1,4 +1,4 @@
-# Asennusohjeet
+# Asennusohje
 
 ## Sovelluksen paikallinen asennus
 
@@ -33,7 +33,7 @@ python run.py
 1. Tarvitset tunnuksen Heroku pilvipalveluun.
 
 2. Asenna tarvittaessa seuraavat työvälineet:
-Heroku CLI (https://devcenter.heroku.com/articles/heroku-cli)
+- Heroku CLI (https://devcenter.heroku.com/articles/heroku-cli)
 
 3. Varmista että seuraavat komennot toimivat komentoriviltä:
 ```
@@ -44,8 +44,8 @@ heroku --version
 heroku create nimi-herokussa
   Huom! sovelluksen osoite: https://nimi-herokussa.herokuapp.com/
 heroku config:set HEROKU=1
-heroku addons:add heroku-postgresql:tyoaikaseuranta-dev
+heroku addons:add heroku-postgresql:hobby-dev
 git push heroku master
 ```
 
-TODO: Lisää tietokantojen konfigurointi / SQL skriptit
+[TODO: Lisää tietokantojen konfigurointi / SQL skriptit]
