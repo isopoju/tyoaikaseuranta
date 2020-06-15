@@ -1,8 +1,15 @@
 {% extends "layout.html" %} {% block body %}
 <div>
-  <h1>Projektin tuntiraportti</h1>
+  <h3>{{ project.name }} tuntiraportti</h3>
 
-  [TODO: puuttuu]
-
+  {% if project_workloads is defined %}
+  <ul>
+    {% for worker in project_workloads %}
+    <li>
+      {{worker.name}} {{worker.hours}} h
+    </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
 </div>
 {% endblock %}

@@ -143,5 +143,5 @@ def workloads_create(project_id):
 @app.route("/project/hourly_report/<project_id>", methods=["GET"])
 @login_required(role="ADMIN")
 def projects_hourly_report(project_id):
-
-    return render_template("projects/hourly_report.html", project_id = project_id)
+    print('GET', project_id)
+    return render_template("projects/hourly_report.html", project = Project.query.get(project_id), project_workloads = Project.project_workloads(project_id))

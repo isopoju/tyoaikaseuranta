@@ -2,6 +2,8 @@ from application import db
 from application.models import Base
 from application.auth.models import User
 
+from sqlalchemy.sql import text
+
 attends = db.Table('participation',
     db.Column('project_id', db.Integer, db.ForeignKey('project.id', ondelete="CASCADE")),
     db.Column('account_id', db.Integer, db.ForeignKey('account.id', ondelete="CASCADE"))
@@ -28,3 +30,19 @@ class Project(Base):
 
     def get_owner_name(self):
         return User.query.get(self.owner_id).name
+
+    @staticmethod
+    def project_workloads(project_id):
+        print('MODEL', project_id)
+        stmt = text("SELECT Account.name, sum(Workload.hours) FROM Account"
+                     " LEFT JOIN Workload ON Workload.worker_id = Account.id"
+                     " WHERE Workload.project_id = :project_id"
+                     " GROUP BY Account.id"
+                     " ORDER BY Account.name").params(project_id=project_id)
+        res = db.engine.execute(stmt)
+
+        response = []
+        for row in res:
+            response.append({"name":row[0], "hours":row[1]})
+
+        return response

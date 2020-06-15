@@ -13,12 +13,12 @@
 
 ## Tuntikirjaaja
 
-- voi tehdä tuntikirjauksia käynnissä oleviin projekteihin [TODO: käynnissä tarkistus]
+- voi tehdä tuntikirjauksia käynnissä oleviin projekteihin [TODO: lisää käynnissä tarkistus]
 - voi muokata ja poistaa omia tuntikirjauksia [TODO: puuttuu]
 - saa yhteenvetoraportin kaikista tekemistään tuntikirjauksista [TODO: puuttuu]
 
 ## Projektin omistaja
 
 - voi muokata tai poistaa omistamiaan projekteja
-- saa tarvittaessa yhteenvetoraportin projektiin tehdyistä tuntikirjauksista [TODO: puuttuu]
+- saa tarvittaessa yhteenvetoraportin projektiin tehdyistä tuntikirjauksista
 - väärä tuntikirjaaja / tuntikirjaus? [TODO: puuttuu]
