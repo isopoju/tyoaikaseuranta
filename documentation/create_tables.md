@@ -1,6 +1,6 @@
 # Tietokannan CREATE TABLE-lauseet
 
-```
+```sql
 CREATE TABLE account (
         id INTEGER NOT NULL,
         date_created DATETIME,

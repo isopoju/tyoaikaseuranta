@@ -8,10 +8,10 @@ Työaikaseuranta on web-sovellus, jolla voidaan seurata ohjelmistotuotantoprojek
 
 ### Testitunnukset
 
-|Käyttäjätunnus|Salasana|
-|--------------|--------|
-|hello         |world   |
-|moi           |kaikki  |
+| Käyttäjätunnus | Salasana |
+| -------------- | -------- |
+| hello          | world    |
+| moi            | kaikki   |
 
 ## Dokumentaatio
 
