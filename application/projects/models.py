@@ -5,6 +5,7 @@ from application.workload.models import Workload
 
 from flask_login import current_user
 from sqlalchemy.sql import text
+from datetime import datetime
 
 attends = db.Table('participation',
     db.Column('project_id', db.Integer, db.ForeignKey('project.id', ondelete="CASCADE")),
@@ -29,6 +30,9 @@ class Project(Base):
         self.end_date = end_date
         self.running = running
         self.owner_id = owner_id
+
+    def dateformat(self, value):
+        return value.strftime('%d.%m.%Y')
 
     def get_owner_name(self):
         return User.query.get(self.owner_id).name

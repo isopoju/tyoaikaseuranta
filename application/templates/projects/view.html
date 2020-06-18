@@ -13,8 +13,8 @@
     <td>{{ project.running }}</td>
     <td>{{ project.name }}</td>
     <td>{{ project.description }}</td>
-    <td>{{ project.start_date }}</td>
-    <td>{{ project.end_date }}</td>
+    <td>{{ project.dateformat(project.start_date) }}</td>
+    <td>{{ project.dateformat(project.end_date) }}</td>
     <td>{{ project.get_owner_name() }}</td>
     {% if current_user.id == project.owner_id %}
     <td>
@@ -93,7 +93,7 @@
   <table>
     <tr>
       <td>{{ workload.id }}</td>
-      <td>{{ workload.date }}</td>
+      <td>{{ project.dateformat(workload.date) }}</td>
       <td>{{ workload.hours }}</td>
       <td>{{ workload.task }}</td>
     </tr>
