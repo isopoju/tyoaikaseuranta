@@ -1,5 +1,6 @@
 from application import db
 from application.models import Base
+from flask_login import current_user
 from werkzeug.security import generate_password_hash
 
 class User(Base):
@@ -14,7 +15,6 @@ class User(Base):
 
     projects = db.relationship("Project", backref="account", lazy=True)
     workloads = db.relationship("Workload", backref='account', lazy=True)
-    # projects = Project.query.with_parent(current_user)
 
     def __init__(self, name, email, username, password, remember):
         self.name = name
@@ -36,4 +36,6 @@ class User(Base):
         return True
 
     def roles(self):
-        return ["ADMIN"]
+        if current_user.username == 'admin':
+            return ["ADMIN"]
+        return []

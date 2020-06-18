@@ -6,7 +6,6 @@ from application.workload.models import Workload
 from application.workload.forms import WorkloadForm
 
 @app.route("/workloads/modify/<workload_id>", methods=["GET"])
-@login_required(role="ADMIN")
 @login_required
 def workloads_modify(workload_id):
     workload = Workload.query.get(workload_id)
@@ -24,9 +23,6 @@ def workloads_update(workload_id):
     if workload.worker_id != current_user.id:
         return redirect(url_for('projects_index'))
 
-    # if not workload:
-    #     return redirect(url_for('projects_index'))
-
     workload.date = form.date.data
     workload.hours = form.hours.data
     workload.task = form.task.data
@@ -39,7 +35,7 @@ def workloads_update(workload_id):
     return redirect(url_for('projects_view', project_id=workload.project_id))
 
 @app.route("/workloads/delete/<workload_id>/", methods=["POST"])
-@login_required(role="ADMIN")
+@login_required
 def workloads_delete(workload_id):
     deleted_workload = Workload.query.get(workload_id)
     if deleted_workload.worker_id != current_user.id:
