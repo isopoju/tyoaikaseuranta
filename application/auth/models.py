@@ -5,7 +5,7 @@ from werkzeug.security import generate_password_hash
 class User(Base):
 
     __tablename__ = "account"
-  
+
     name = db.Column(db.String(64), nullable=False)
     email = db.Column(db.String(64), nullable=False)
     username = db.Column(db.String(16), index=True, unique=True, nullable=False)

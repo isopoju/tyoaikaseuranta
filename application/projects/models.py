@@ -1,7 +1,9 @@
 from application import db
 from application.models import Base
 from application.auth.models import User
+from application.workload.models import Workload
 
+from flask_login import current_user
 from sqlalchemy.sql import text
 
 attends = db.Table('participation',
@@ -30,6 +32,9 @@ class Project(Base):
 
     def get_owner_name(self):
         return User.query.get(self.owner_id).name
+
+    def get_workloads(self):
+        return Workload.query.filter_by(worker_id=current_user.id, project_id=self.id).order_by(Workload.date.desc()).all()
 
     @staticmethod
     def project_workloads(project_id):

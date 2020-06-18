@@ -40,7 +40,7 @@
   method="POST"
   action="{{ url_for('projects_join', project_id=project.id) }}"
 >
-  <input type="submit" value="Liity" />
+  <input type="submit" value="Liity projektiin" />
 </form>
 {% else %}
 <p>
@@ -88,6 +88,19 @@
   <input type="submit" value="Lisää tunnit" />
 </form>
 <p>
-  Missä käyttäjä näkee lisätyt tunnit? Käyttäjän tuntiraportti ja muokkaus?
+  <b>Tuntikirjaukset</b>
+  {% for workload in project.get_workloads() %}
+  <table>
+    <tr>
+      <td>{{ workload.id }}</td>
+      <td>{{ workload.date }}</td>
+      <td>{{ workload.hours }}</td>
+      <td>{{ workload.task }}</td>
+    </tr>
+  </table>
+  {% endfor %}
+</p>
+<p>
+  Lisää Muokkaa napit, käyttäjän tuntiraportti eri projekteista?
 </p>
 {% endif %} {% endblock %}
