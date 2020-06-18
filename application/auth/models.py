@@ -1,5 +1,6 @@
 from application import db
 from application.models import Base
+
 from flask_login import current_user
 from werkzeug.security import generate_password_hash
 

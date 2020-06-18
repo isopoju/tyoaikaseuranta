@@ -1,6 +1,6 @@
 from application import db
-from application.models import Base
 from application.auth.models import User
+from application.models import Base
 from application.workload.models import Workload
 
 from flask_login import current_user

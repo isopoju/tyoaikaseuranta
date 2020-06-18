@@ -1,9 +1,9 @@
+from application import app, db, login_required
+from application.workload.forms import WorkloadForm
+from application.workload.models import Workload
+
 from flask import render_template, request, redirect, url_for
 from flask_login import current_user
-
-from application import app, db, login_required
-from application.workload.models import Workload
-from application.workload.forms import WorkloadForm
 
 @app.route("/workloads/modify/<workload_id>", methods=["GET"])
 @login_required
@@ -17,12 +17,11 @@ def workloads_modify(workload_id):
 @app.route("/workloads/update/<workload_id>", methods=["POST"])
 @login_required
 def workloads_update(workload_id):
-    form = WorkloadForm(request.form)
-
     workload = Workload.query.get(workload_id)
-    if workload.worker_id != current_user.id:
+    if current_user.id != workload.worker_id:
         return redirect(url_for('projects_index'))
 
+    form = WorkloadForm(request.form)
     workload.date = form.date.data
     workload.hours = form.hours.data
     workload.task = form.task.data
@@ -38,7 +37,7 @@ def workloads_update(workload_id):
 @login_required
 def workloads_delete(workload_id):
     deleted_workload = Workload.query.get(workload_id)
-    if deleted_workload.worker_id != current_user.id:
+    if current_user.id != deleted_workload.worker_id:
         return redirect(url_for('projects_index'))
 
     db.session().delete(deleted_workload)

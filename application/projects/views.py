@@ -1,12 +1,13 @@
+from application import app, db, login_manager, login_required
+from application.auth.models import User
+from application.projects.forms import ProjectForm
+from application.projects.models import Project
+from application.workload.forms import WorkloadForm
+from application.workload.models import Workload
+
 from flask import render_template, request, redirect, url_for
 from flask_login import current_user
 
-from application import app, db, login_manager, login_required
-from application.projects.models import Project
-from application.projects.forms import ProjectForm
-from application.auth.models import User
-from application.workload.models import Workload
-from application.workload.forms import WorkloadForm
 
 @app.route("/projects", methods=["GET"])
 def projects_index():
