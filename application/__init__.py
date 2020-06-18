@@ -54,6 +54,7 @@ from application.auth import models
 from application.auth import views
 
 from application.workload import models
+from application.workload import views
 
 # login functionality, part 2
 from application.auth.models import User

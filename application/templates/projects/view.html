@@ -89,18 +89,26 @@
 </form>
 <p>
   <b>Tuntikirjaukset</b>
+</p>
+<table>
+  <tr>
+    <th>Pvm</th>
+    <th>Tunnit</th>
+    <th>Tehtävä</th>
+  </tr>
   {% for workload in project.get_workloads() %}
-  <table>
-    <tr>
-      <td>{{ workload.id }}</td>
-      <td>{{ project.dateformat(workload.date) }}</td>
-      <td>{{ workload.hours }}</td>
-      <td>{{ workload.task }}</td>
-    </tr>
-  </table>
+  <tr>
+    <td>{{ project.dateformat(workload.date) }}</td>
+    <td>{{ workload.hours }}</td>
+    <td>{{ workload.task }}</td>
+    <td>
+      <a
+        href="{{ url_for('workloads_modify', workload_id=workload.id) }}"
+        class="btn btn-primary"
+        >Muokkaa</a
+      >
+    </td>
+  </tr>
   {% endfor %}
-</p>
-<p>
-  Lisää Muokkaa napit, käyttäjän tuntiraportti eri projekteista?
-</p>
+</table>
 {% endif %} {% endblock %}

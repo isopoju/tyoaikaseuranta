@@ -49,8 +49,8 @@
 4. Siirry komentorivillä tyoaikaseuranta kansioon ja anna seuraavat komennot:
 
    ```bash
-   heroku create nimi-herokussa
-      Huom! sovelluksen osoite: https://nimi-herokussa.herokuapp.com/
+   heroku create heroku-nimi
+      Huom! sovelluksen osoite: https://heroku-nimi.herokuapp.com/
    heroku config:set HEROKU=1
    heroku addons:add heroku-postgresql:hobby-dev
    git push heroku master
