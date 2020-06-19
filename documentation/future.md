@@ -10,6 +10,6 @@
 
 3. Token perustainen sisäänkirjautuminen, muista minut toiminnolla
 
-   Sovellus ei tallenna käyttäjän salasanaa selväkielisenä. Jatkossa sovellukseen voisi toteuttaa Flask Security pakkauksella. Account tauluun on tehty remember kenttä.
+   Sovellus ei tallenna käyttäjän salasanaa selväkielisenä. Jatkossa sovellukseen voisi toteuttaa Flask Security pakkauksella token perustaisen sisäänkirjautumistoiminnon. Account tauluun on tehty remember kenttä.
 
 4. index.html ei ole käytössä. Sivulla voitaisiin tiedottaan ajankohtaisia asioista.
