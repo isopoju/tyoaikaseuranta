@@ -30,9 +30,11 @@
 
 5. Sovellus käynnistyy osoitteeseen: <http://localhost:5000/>
 
-6. Sovelluksen tietokanta on tyoaikaseuranta\application\database.db tiedostossa ja voit tarkastella sen sisältöä tarvittaessa sqlite3 työkalulla <https://www.sqlite.org/download.html>.
+6. Rekisteröi sovellukseen pääkäyttäjä, jonka käyttäjätunnus on admin.
 
-## Sovelluksen asennus Heroku pilvipalveluun
+7. Sovelluksen tietokanta on tyoaikaseuranta\application\database.db tiedostossa ja voit tarkastella sen sisältöä tarvittaessa sqlite3 työkalulla <https://www.sqlite.org/download.html>.
+
+## Paikallisen sovelluksen asennus Heroku pilvipalveluun
 
 1. Tarvitset tunnuksen Heroku pilvipalveluun.
 
@@ -56,4 +58,4 @@
    git push heroku master
    ```
 
-[TODO: Lisää tietokantojen konfigurointi / SQL skriptit]
+5. Rekisteröi sovellukseen pääkäyttäjä, jonka käyttäjätunnus on admin.

@@ -1,11 +1,10 @@
-from application import app, db
+from application import app, db, login_required
 from application.auth.forms import LoginForm, RegisterForm
 from application.auth.models import User
 
 from flask import render_template, request, redirect, url_for
 from flask_login import login_user, logout_user
 from werkzeug.security import check_password_hash
-
 
 @app.route("/auth/login", methods = ["GET", "POST"])
 def auth_login():
@@ -53,3 +52,8 @@ def register():
 
     login_user(new_user)
     return redirect(url_for("projects_index"))
+
+@app.route("/auth/admin_tools/", methods=["GET"])
+@login_required(role="ADMIN")
+def admin_tools():
+    return render_template("auth/admin_tools.html")
