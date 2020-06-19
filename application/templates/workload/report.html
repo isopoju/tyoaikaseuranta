@@ -1,5 +1,21 @@
 {% extends "layout.html" %} {% block body %}
 <div>
-  <h3>Tuntiraportti</h3>
+  <h3>Tuntikirjausraportti</h3>
+
+  {% if user_workloads is defined %}
+  <ul>
+    {% for project in user_workloads %}
+    <li>
+      <a href="{{ url_for('projects_view', project_id=project.id) }}">
+        {{project.name}}
+      </a>
+      {{project.hours}} h
+    </li>
+    {% endfor %}
+    <li>
+      Yhteensä: {{ user_workloads | sum(attribute='hours') }} h
+    </li>
+  </ul>
+  {% endif %}
 </div>
 {% endblock %}

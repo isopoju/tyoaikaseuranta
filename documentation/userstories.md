@@ -15,10 +15,13 @@
 
 - voi tehdä tuntikirjauksia käynnissä oleviin projekteihin [TODO: lisää käynnissä tarkistus]
 - voi muokata ja poistaa omia tuntikirjauksia
-- saa yhteenvetoraportin kaikista tekemistään tuntikirjauksista [TODO: puuttuu]
+- saa yhteenvetoraportin kaikista tekemistään tuntikirjauksista
 
 ## Projektin omistaja
 
 - voi muokata tai poistaa omistamiaan projekteja
 - saa tarvittaessa yhteenvetoraportin projektiin tehdyistä tuntikirjauksista
-- väärä tuntikirjaaja / tuntikirjaus? [TODO: puuttuu]
+
+## admin tunnus
+
+- voi poistaa käyttäjän, hänen tuntikirjaukset ja projektit [TODO]

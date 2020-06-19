@@ -46,6 +46,6 @@ def workloads_delete(workload_id):
     return redirect(url_for('projects_view', project_id=deleted_workload.project_id))
 
 @app.route("/workloads/report/", methods=["GET"])
-@login_required(role="ADMIN")
+@login_required
 def workload_report():
-    return render_template("workload/report.html")
+    return render_template("workload/report.html", user_workloads = Workload.user_workloads(current_user.id))
