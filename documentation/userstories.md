@@ -1,6 +1,6 @@
 # Käyttäjätarinat
 
-Sovellusessa on toteutettu seuraavat käyttäjätarinat.
+Sovellukseen on toteutettu seuraavat käyttäjätarinat.
 
 ## Vierailija
 
@@ -16,7 +16,7 @@ Sovellusessa on toteutettu seuraavat käyttäjätarinat.
 ## Tuntikirjaaja
 
 - voi tehdä tuntikirjauksia projekteihin, joihin hän on liittynyt
-- voi muokata ja poistaa omia tuntikirjauksia
+- voi listata, muokata ja poistaa omia tuntikirjauksia
 - saa yhteenvetoraportin kaikista tekemistään tuntikirjauksista
 
 ## Projektin omistaja
@@ -26,4 +26,4 @@ Sovellusessa on toteutettu seuraavat käyttäjätarinat.
 
 ## Sovelluksen ylläpitäjä
 
-- sovellukseen on toteutettu ylläpitotunnus (admin)
+- sovellukseen on toteutettu roolipohjainen ylläpitotunnus (admin)

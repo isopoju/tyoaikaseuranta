@@ -1,13 +1,15 @@
-# Kehityspiirteit�
+# Kehityspiirteitä
 
-1. Yll�pitoty�kalut
+1. Ylläpitotyökalut
 
-   P��k�ytt�j�n ty�kalujen alusta on toteutettu yhdelle k�ytt�j�lle. Varsinaisia yll�pitoty�kaluja ei ole toteutettu.
+   Pääkäyttäjän työkalujen alusta on toteutettu yhdelle käyttäjälle. Varsinaisia ylläpitotyökaluja ei ole toteutettu.
 
-2. K�ytt�j�roolien laajempi k�ytt�
+2. Käyttäjäroolien laajempi käyttö
 
-   Sovellukseen on toteuttu k�ytt�jien roolit. Jatkossa projektilla voisi olla useita omistajia tai sovelluksella voisi olla useita yll�pit�ji�.
+   Sovellukseen on toteuttu köyttäjien roolit. Jatkossa projektilla voisi olla useita omistajia tai sovelluksella voisi olla useita ylläpitäjiä.
 
-3. Token perustainen sis��nkirjautuminen, muista minut toiminnolla
+3. Token perustainen sisäänkirjautuminen, muista minut toiminnolla
 
-   Sovellus ei tallenna k�ytt�j�n salasanaa selv�kielisen�. Jatkossa sovellukseen voisi toteuttaa Flask Security pakkauksella. Account tauluun on tehty remember kentt�.
+   Sovellus ei tallenna käyttäjän salasanaa selväkielisenä. Jatkossa sovellukseen voisi toteuttaa Flask Security pakkauksella. Account tauluun on tehty remember kenttä.
+
+4. index.html ei ole käytössä. Sivulla voitaisiin tiedottaan ajankohtaisia asioista.
