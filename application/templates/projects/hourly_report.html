@@ -9,6 +9,9 @@
       {{worker.name}} {{worker.hours}} h
     </li>
     {% endfor %}
+    <li>
+      Yhteensä: {{ project_workloads | sum(attribute='hours') }} h
+    </li>
   </ul>
   {% endif %}
 </div>

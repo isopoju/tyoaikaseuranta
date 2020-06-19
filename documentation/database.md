@@ -1,4 +1,23 @@
-# Tietokannan CREATE TABLE-lauseet
+# Tietokannan kuvaus
+
+Sovelluksen tietokannassa on kolme taulua (Account, Project ja Workload) ja yksi liitostaulu (Participation). Tietokanta on kolmannessa normaalimuodossa ja sen taulujen v�lill� on seuraavat yhteydet:
+
+- rekister�itynyt k�ytt�j� voi omistaa useita projekteja
+- projektilla on vain yksi omistaja eli rekister�itynyt k�ytt�j� joka on lis�nnyt projektin
+- rekister�itynyt k�ytt�j� voi osallitua useaan projektiin liittym�ll� niihin
+- projektiin voi liitty� useita rekister�ityneit� k�ytt�ji�
+- rekister�ityneell� k�ytt�j�ll� voi olla useita tuntikirjauksia
+- tuntikirjauksella on vain yksi tekij�
+- projektiin voi liitty� useita tuntikirjauksia
+- tuntikirjaus liittyy vain yhteen projektiin
+
+Project ja Workload tauluista on toteutettu t�ysi CRUD (eli luomis-, lukemis-, p�ivitys-, ja poistotoiminnallisuus). Participation taululla toteutettu monesta moneen suhde taulujen Account ja Project v�lill�.
+
+## Tietokantakaavio
+
+![tietokantakaavio.png](https://github.com/isopoju/tyoaikaseuranta/blob/master/documentation/tietokantakaavio.png)
+
+## Tietokannan CREATE TABLE-lauseet
 
 ```sql
 CREATE TABLE account (

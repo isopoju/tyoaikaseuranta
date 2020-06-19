@@ -42,7 +42,6 @@ class Project(Base):
 
     @staticmethod
     def project_workloads(project_id):
-        print('MODEL', project_id)
         stmt = text("SELECT Account.name, sum(Workload.hours) FROM Account"
                      " LEFT JOIN Workload ON Workload.worker_id = Account.id"
                      " WHERE Workload.project_id = :project_id"

@@ -1,5 +1,7 @@
 # Käyttäjätarinat
 
+Sovellusessa on toteutettu seuraavat käyttäjätarinat.
+
 ## Vierailija
 
 - voi listata sovellukseen perustetut projektit
@@ -13,7 +15,7 @@
 
 ## Tuntikirjaaja
 
-- voi tehdä tuntikirjauksia käynnissä oleviin projekteihin [TODO: lisää käynnissä tarkistus]
+- voi tehdä tuntikirjauksia projekteihin, joihin hän on liittynyt
 - voi muokata ja poistaa omia tuntikirjauksia
 - saa yhteenvetoraportin kaikista tekemistään tuntikirjauksista
 
@@ -22,6 +24,6 @@
 - voi muokata tai poistaa omistamiaan projekteja
 - saa tarvittaessa yhteenvetoraportin projektiin tehdyistä tuntikirjauksista
 
-## admin tunnus
+## Sovelluksen ylläpitäjä
 
-- voi poistaa käyttäjän, hänen tuntikirjaukset ja projektit [TODO]
+- sovellukseen on toteutettu ylläpitotunnus (admin)

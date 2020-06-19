@@ -4,12 +4,14 @@
     <th>Käynnissä</th>
     <th>Projekti</th>
     <th>Kuvaus</th>
+    <th>Omistaja</th>
   </tr>
   {% for project in projects %}
   <tr>
     <td>{{ project.running }}</td>
     <td>{{ project.name }}</td>
     <td>{{ project.description }}</td>
+    <td>{{ project.get_owner_name() }}</td>
     <td>
       <a
         href="{{ url_for('projects_view', project_id=project.id) }}"
